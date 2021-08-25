@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Quotable Quotes</title>
+</head>
+<body>
+    <div class="container">
+        <div style="float: right;">
+            <a href="/quotes">Dashboard</a> | <a href="/logout">Logout</a>
+        </div>
+        <h4 style="padding-top: 20px;">Edit Quote</h4>
+        <div class="col-6 px-3">
+            <form action="/quotes/{{quote.id}}/update" method="POST">
+                {% csrf_token %}
+                {% for message in messages %}
+                    <p class="text-danger small">{{ message }}</p>
+                {% endfor %}
+                <div class="form-group">
+                    <label for="quotee">Quoted By: <input type="text" value="{{quote.quotee}}" class="form-control" name="quotee"></label>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message: </label>
+                    <textarea name="message" class="form-control" cols="30" rows="10">{{quote.message}}</textarea>
+                    <!-- <input type="text" value="{{quote.message}}" class="form-control" name="message"> -->
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="form-group">
+                    <button style="margin-bottom: 10px;" class="btn btn-danger"><a style="color: white;" href="/quotes">Cancel</a></button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>

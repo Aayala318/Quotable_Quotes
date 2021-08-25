@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotable Quotes</title>
+</head>
+<body>
+    <div class="container">
+        <div style="float: right;">
+            <a href="/quotes">Dashboard</a> | <a href="/logout">Logout</a>
+        </div>
+        <div class="col-6 px-2">
+            <h2>Posts by {{user.first_name}}</h2>
+            <h3>Count: {{user.has_created_quotes.count}}</h3>
+        </div>
+        <div class="col-6 px-3">
+            {% for quote in user.has_created_quotes.all %}
+                <ul>
+                    <li>{{quote.quotee}}: {{quote.message}}</li> 
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+<!-- <a href="{{quote.id}}/delete">Delete</a></p> -->
+</html>
